@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wild Things Cinematic</title>
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+:root{
+  --moss:#1c3319; --moss-2:#2e562a; --night:#0d170b; --cream:#f5f0e4; --paper:#fbf8f1;
+  --marigold:#f2a93b; --coral:#ef8451; --sage:#a9c78c; --ink:#172015; --muted:#5b6656;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:Satoshi,system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:18px;line-height:1.6}
+main{overflow-x:hidden;width:100%;max-width:100%}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:"Cabinet Grotesk",system-ui,sans-serif;letter-spacing:-.025em;line-height:.98;font-weight:800}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.chapter{padding:190px 0}
+@media (max-width:760px){.chapter{padding:120px 0}}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border-radius:999px;font-weight:700;font-size:17px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s,color .3s}
+.btn i{font-size:20px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{transform:translateY(-3px)}
+.btn:hover i{transform:translateX(4px) rotate(-8deg)}
+.btn-light{background:var(--cream);color:var(--moss)}
+.btn-gold{background:var(--marigold);color:var(--night)}
+.btn-dark{background:var(--moss);color:#fff}
+.btn-line{border:1.5px solid rgba(23,32,21,.25);color:var(--ink)}
+
+/* nav */
+.nav{position:fixed;top:calc(18px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;width:min(1120px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 10px;border-radius:999px;background:rgba(18,30,16,.46);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.14);transition:background .4s}
+.nav.solid{background:rgba(18,30,16,.86)}
+.nav .brand{background:var(--cream);border-radius:999px;padding:4px 16px;display:flex;align-items:center}
+.nav .brand img{height:40px;width:auto}
+.nav ul{display:flex;list-style:none;gap:4px}
+.nav ul a{color:rgba(255,255,255,.86);padding:10px 16px;border-radius:999px;font-weight:500;font-size:15px;transition:background .3s,color .3s}
+.nav ul a:hover{background:rgba(255,255,255,.12);color:#fff}
+.nav .right{display:flex;gap:8px;align-items:center}
+.nav .tel{color:#fff;font-weight:700;font-size:15px;display:flex;gap:8px;align-items:center;padding:0 12px}
+.nav .tel i{color:var(--marigold)}
+.nav .btn{padding:12px 22px;font-size:15px}
+@media (max-width:1020px){.nav ul{display:none}}
+@media (max-width:560px){.nav .tel span{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:min(100svh,880px);display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;background:var(--night)}
+.hero .bg{position:absolute;inset:-6% 0 0 0;background:url(img/hero-wide.jpg) center 40%/cover;filter:contrast(1.1) saturate(.9);transform-origin:center}
+.hero .wash{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 48%,rgba(13,23,11,.35) 0%,rgba(13,23,11,.78) 60%,rgba(13,23,11,.96) 100%)}
+.hero .inner{position:relative;z-index:2;padding:160px 28px 120px;width:100%}
+.hero h1{max-width:72rem;margin:0 auto;font-size:clamp(2.9rem,5.6vw,5.9rem)}
+.hero h1 .soft{color:var(--marigold)}
+.hero p{max-width:40rem;margin:28px auto 44px;font-size:clamp(17px,1.5vw,20px);color:rgba(255,255,255,.8)}
+.hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:13px;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.hero .scroll span{width:1px;height:42px;background:linear-gradient(rgba(255,255,255,.7),transparent);animation:drip 2.2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* marquee */
+.marquee{background:var(--moss);color:var(--cream);padding:34px 0;overflow:hidden;position:relative}
+.marquee .row{display:flex;gap:56px;width:max-content;align-items:center;font-family:"Cabinet Grotesk";font-weight:700;font-size:clamp(34px,4.4vw,62px);letter-spacing:-.02em;white-space:nowrap}
+.marquee i{color:var(--marigold);font-size:.7em}
+
+/* interest */
+.intro h2{font-size:clamp(2.6rem,5vw,5.2rem);max-width:78rem}
+.pill{display:inline-block;height:.78em;width:1.9em;border-radius:999px;background-size:cover;background-position:center;vertical-align:-.04em;margin:0 .12em;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.intro h2:hover .pill{width:2.3em}
+.intro .sub{display:flex;justify-content:space-between;gap:40px;margin:48px 0 80px;align-items:end;flex-wrap:wrap}
+.intro .sub p{max-width:36rem;color:var(--muted);font-size:20px}
+
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(280px,auto);grid-auto-flow:dense;gap:18px}
+.card{position:relative;border-radius:30px;overflow:hidden;background:var(--paper)}
+.card.span-2x2{grid-column:span 2;grid-row:span 2}
+.card.span-2x1{grid-column:span 2}
+.card .media{position:absolute;inset:0;overflow:hidden}
+.card .media img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:contrast(1.08) saturate(.95)}
+.card:hover .media img{transform:scale(1.05)}
+.card .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(13,23,11,.85))}
+.card .body{position:relative;z-index:2;height:100%;padding:34px;display:flex;flex-direction:column;justify-content:flex-end}
+.card.photo .body{color:#fff}
+.card h3{font-size:clamp(28px,2.6vw,40px)}
+.card p{margin-top:12px;font-size:17px;max-width:34rem}
+.card.photo p{color:rgba(255,255,255,.82)}
+.card.call{background:var(--moss);color:var(--cream);justify-content:space-between}
+.card.call .body{justify-content:space-between}
+.card.call .num{font-family:"Cabinet Grotesk";font-weight:800;font-size:clamp(40px,4.4vw,64px);color:var(--marigold);letter-spacing:-.02em;line-height:1}
+.card.call .meta{display:flex;gap:28px;flex-wrap:wrap;font-size:15px;color:rgba(245,240,228,.75)}
+.card.call .meta b{color:#fff;display:block;font-size:17px}
+.card.gold{background:var(--marigold)}
+.card.gold .body{justify-content:space-between}
+.card.gold i{font-size:44px}
+.card .cap-top{position:absolute;top:22px;left:22px;z-index:2;background:rgba(245,240,228,.92);color:var(--moss);font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px}
+@media (max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}.card.span-2x1{grid-column:span 2}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.card.span-2x2,.card.span-2x1{grid-column:span 1}.card.span-2x2{grid-row:span 1;min-height:420px}}
+
+/* desire */
+.story{background:var(--night);color:var(--cream);position:relative}
+.scrub{font-family:"Cabinet Grotesk";font-weight:700;font-size:clamp(30px,3.8vw,58px);line-height:1.12;letter-spacing:-.02em;max-width:68rem;margin:0 auto;text-align:center}
+.scrub .w{opacity:.25;transition:none}
+.scrub .hl{color:var(--marigold)}
+.gallery{display:grid;gap:140px;margin-top:180px}
+.frame{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+.frame:nth-child(even){grid-template-columns:.8fr 1.2fr}
+.frame:nth-child(even) .fig{order:2}
+.frame .fig{border-radius:34px;overflow:hidden;aspect-ratio:4/3;will-change:transform,opacity}
+.frame .fig img{width:100%;height:100%;object-fit:cover;filter:contrast(1.08)}
+.frame h3{font-size:clamp(34px,3.4vw,52px);color:#fff}
+.frame p{color:rgba(245,240,228,.72);margin-top:18px;max-width:30rem}
+.frame .ix{font-family:"Cabinet Grotesk";color:var(--sage);font-weight:700;font-size:18px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+@media (max-width:860px){.frame,.frame:nth-child(even){grid-template-columns:1fr;gap:28px}.frame:nth-child(even) .fig{order:0}.gallery{gap:100px}}
+
+/* testimonials */
+.voices .top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:70px;flex-wrap:wrap}
+.voices h2{font-size:clamp(2.4rem,4.4vw,4.6rem);max-width:48rem}
+.arrows{display:flex;gap:10px}
+.arrows button{width:62px;height:62px;border-radius:50%;border:1.5px solid rgba(23,32,21,.2);background:transparent;font-size:22px;cursor:pointer;transition:background .3s,color .3s,transform .4s}
+.arrows button:hover{background:var(--moss);color:#fff;transform:scale(1.06)}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center}
+.faces{display:flex}
+.face{width:120px;height:120px;border-radius:50%;border:5px solid var(--cream);display:grid;place-items:center;font-family:"Cabinet Grotesk";font-weight:800;font-size:38px;margin-left:-34px;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s;background-size:cover;background-position:center}
+.face:first-child{margin-left:0}
+.face.on{transform:translateY(-14px) scale(1.08);z-index:2}
+.face:not(.on){opacity:.55}
+.quote{position:relative;min-height:220px}
+.quote blockquote{font-family:"Cabinet Grotesk";font-weight:500;font-size:clamp(26px,2.6vw,40px);line-height:1.2;letter-spacing:-.015em}
+.quote cite{display:block;margin-top:24px;font-style:normal;color:var(--muted);font-size:16px}
+.quote cite b{color:var(--ink)}
+.stars{color:var(--marigold);font-size:18px;letter-spacing:3px}
+@media (max-width:860px){.stage{grid-template-columns:1fr;gap:40px}.face{width:88px;height:88px;font-size:28px}}
+
+/* action */
+.action{background:var(--moss);color:var(--cream);position:relative;overflow:hidden}
+.action .glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(242,169,59,.28),transparent 65%);right:-300px;top:-300px;filter:blur(20px)}
+.action h2{font-size:clamp(3rem,7vw,7.4rem);max-width:80rem;position:relative}
+.action h2 .pill{height:.72em}
+.action .lead{max-width:40rem;margin:36px 0 50px;color:rgba(245,240,228,.8);font-size:20px;position:relative}
+.action .ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative}
+.impression{position:relative;margin-top:100px;border-radius:30px;overflow:hidden;will-change:transform}
+.impression img{width:100%;aspect-ratio:21/9;object-fit:cover}
+.impression figcaption{position:absolute;left:22px;bottom:20px;background:rgba(245,240,228,.92);color:var(--moss);font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px}
+@media (max-width:700px){.impression img{aspect-ratio:4/3}}
+.ways{margin-top:130px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(245,240,228,.18);position:relative}
+.way{padding:34px 28px 10px 0;border-right:1px solid rgba(245,240,228,.12);transition:color .3s}
+.way:last-child{border-right:0}
+.way + .way{padding-left:28px}
+.way i{font-size:30px;color:var(--marigold)}
+.way h4{font-size:26px;margin:18px 0 8px;color:#fff}
+.way p{font-size:15px;color:rgba(245,240,228,.68)}
+.way span{display:inline-flex;gap:6px;align-items:center;margin-top:18px;font-weight:700;font-size:15px;color:var(--sage)}
+.way:hover span i{transform:translateX(5px)}
+.way span i{font-size:16px;color:inherit;transition:transform .4s}
+@media (max-width:900px){.ways{grid-template-columns:1fr 1fr}.way{border-right:0;padding:30px 0!important;border-bottom:1px solid rgba(245,240,228,.12)}}
+@media (max-width:520px){.ways{grid-template-columns:1fr}}
+
+footer{background:var(--night);color:rgba(245,240,228,.7);padding:90px 0 36px;font-size:15px}
+footer .grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+footer .brand{background:var(--cream);display:inline-block;border-radius:22px;padding:10px 18px;margin-bottom:22px}
+footer .brand img{height:58px}
+footer h5{font-family:"Cabinet Grotesk";font-size:18px;color:#fff;margin-bottom:16px;font-weight:700}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a:hover{color:var(--marigold)}
+footer .base{margin-top:80px;padding-top:26px;border-top:1px solid rgba(245,240,228,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px}
+@media (max-width:900px){footer .grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+
+<nav class="nav" id="nav">
+  <a class="brand" href="#"><img src="img/logo.png" alt="Wild Things Rescue"></a>
+  <ul><li><a href="#">About</a></li><li><a href="#">New centre</a></li><li><a href="#">Support us</a></li><li><a href="#">Volunteer</a></li><li><a href="#">Shop</a></li></ul>
+  <div class="right">
+    <a class="tel" href="tel:01526578579"><i class="ph-fill ph-phone-call"></i><span>01526 578579</span></a>
+    <a class="btn btn-gold" href="#give">Donate</a>
+  </div>
+</nav>
+
+<header class="hero grain">
+  <div class="bg" id="heroBg"></div>
+  <div class="wash"></div>
+  <div class="inner">
+    <h1 class="hero-h">Lincolnshire's wild things, <span class="soft">patched up</span> and sent back home</h1>
+    <p class="hero-p">The county's largest wildlife rescue. We care for sick, injured and orphaned hedgehogs, birds and small mammals, then return them to the wild.</p>
+    <div class="ctas hero-c">
+      <a class="btn btn-light" href="tel:01526578579"><i class="ph ph-phone"></i>Found an animal? Call us</a>
+      <a class="btn btn-gold" href="#give">Support the rescue<i class="ph ph-arrow-right"></i></a>
+    </div>
+  </div>
+  <div class="scroll">Scroll<span></span></div>
+</header>
+
+<section class="marquee" aria-hidden="true">
+  <div class="row" id="mq">
+    <span>Hedgehogs</span><i class="ph-fill ph-leaf"></i><span>Owls</span><i class="ph-fill ph-leaf"></i><span>Buzzards</span><i class="ph-fill ph-leaf"></i><span>Kestrels</span><i class="ph-fill ph-leaf"></i><span>Robins</span><i class="ph-fill ph-leaf"></i><span>Blackbirds</span><i class="ph-fill ph-leaf"></i><span>Pigeons</span><i class="ph-fill ph-leaf"></i><span>Ducks</span><i class="ph-fill ph-leaf"></i><span>Swans</span><i class="ph-fill ph-leaf"></i><span>Voles</span><i class="ph-fill ph-leaf"></i>
+  </div>
+</section>
+
+<section class="chapter intro">
+  <div class="wrap">
+    <h2 class="reveal-up">Hedgehogs <span class="pill" style="background-image:url(img/hedgehog.jpg)"></span>, owls <span class="pill" style="background-image:url(img/owl.jpg)"></span> and every small wild thing <span class="pill" style="background-image:url(img/cygnet.jpg)"></span> in between.</h2>
+    <div class="sub reveal-up">
+      <p>From Lincoln to Boston, Spalding to Grantham, we take in the county's wildlife casualties and work alongside vets to get them fit for release.</p>
+      <a class="btn btn-line" href="#">About the rescue<i class="ph ph-arrow-up-right"></i></a>
+    </div>
+    <div class="bento">
+      <article class="card photo span-2x2 reveal-up">
+        <div class="media"><img src="img/owl.jpg" alt="Short-eared owl in care"></div><div class="shade"></div>
+        <div class="body"><h3>Expert care, start to finish</h3><p>Birds of prey, garden birds, waterfowl, hedgehogs and small mammals, each given the time and treatment they need to go home.</p></div>
+      </article>
+      <article class="card call span-2x1 reveal-up">
+        <div class="body">
+          <div><h3 style="font-size:clamp(24px,2vw,30px);color:#fff;margin-bottom:14px">Found an animal in distress?</h3><a class="num" href="tel:01526578579">01526 578579</a></div>
+          <div class="meta" style="margin-top:26px"><div><b>9am to 6pm</b>Every day</div><div><b>Closed Tuesdays</b>Try your nearest 24-hour vet</div><div><b>Facebook</b>Message us any time</div></div>
+        </div>
+      </article>
+      <article class="card photo reveal-up">
+        <div class="media"><img src="img/xray.jpg" alt="Swan X-ray"></div><div class="shade"></div>
+        <span class="cap-top">Swan, X-rayed</span>
+        <div class="body"><h3 style="font-size:28px">Vets across the county</h3></div>
+      </article>
+      <article class="card gold reveal-up">
+        <div class="body"><i class="ph ph-first-aid-kit"></i><div><h3 style="font-size:28px">Free at the vet</h3><p style="font-size:16px">Drop a wild animal at any vet at no charge. If they prescribe medication, we cover it.</p></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="chapter story grain">
+  <div class="wrap">
+    <p class="scrub" id="scrub">Our patients are wild, and that's the point. We keep handling to a minimum, we don't open for tours, and every decision is made with one goal: <span class="hl">getting them back where they belong.</span></p>
+    <div class="gallery">
+      <div class="frame">
+        <div class="fig"><img src="img/fox.jpg" alt="Fox cub curled up"></div>
+        <div><div class="ix"><i class="ph ph-moon-stars"></i>Rest</div><h3>Quiet, dark and calm</h3><p>Wild animals find people frightening. Rest in a calm space is often the best medicine we can give.</p></div>
+      </div>
+      <div class="frame">
+        <div class="fig"><img src="img/hog-check.jpg" alt="Hedgehog health check"></div>
+        <div><div class="ix"><i class="ph ph-stethoscope"></i>Treatment</div><h3>Checked over, properly</h3><p>Every new arrival gets a thorough health check, with vet support for X-rays, medication and more.</p></div>
+      </div>
+      <div class="frame">
+        <div class="fig"><img src="img/squabs.jpg" alt="Baby pigeons in the nursery"></div>
+        <div><div class="ix"><i class="ph ph-baby"></i>Nursery</div><h3>Round-the-clock babies</h3><p>Orphaned chicks, squabs and cygnets are hand-reared until they're ready to look after themselves.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter voices">
+  <div class="wrap">
+    <div class="top">
+      <h2 class="reveal-up">People who've called us, in their own words</h2>
+      <div class="arrows"><button id="prev" aria-label="Previous review"><i class="ph ph-arrow-left"></i></button><button id="next" aria-label="Next review"><i class="ph ph-arrow-right"></i></button></div>
+    </div>
+    <div class="stage">
+      <div class="faces" id="faces"></div>
+      <div class="quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote id="q"></blockquote><cite id="c"></cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter action grain" id="give">
+  <div class="glow"></div>
+  <div class="wrap">
+    <h2 class="reveal-up">We're building a <span class="pill" style="background-image:url(img/ducklings.jpg)"></span> bigger home for wildlife</h2>
+    <p class="lead reveal-up">We've outgrown our centre. The new one will have specialist rooms for hedgehogs, garden birds, corvids, birds of prey, waterfowl and larger mammals, and we want it built by the community.</p>
+    <div class="ctas reveal-up">
+      <a class="btn btn-gold" href="#">Buy a brick<i class="ph ph-arrow-right"></i></a>
+      <a class="btn btn-light" href="#">Give &pound;3 a month</a>
+    </div>
+    <figure class="impression" id="impression"><img src="img/centre-art.jpg" alt="Illustration of the planned new rescue centre"><figcaption>Artist's impression of our new centre</figcaption></figure>
+    <div class="ways">
+      <a class="way" href="#"><i class="ph ph-bowl-food"></i><h4>Meal tickets</h4><p>Buy a patient their dinner, or sponsor one for a whole year.</p><span>View packs<i class="ph ph-arrow-right"></i></span></a>
+      <a class="way" href="#"><i class="ph ph-gift"></i><h4>Amazon wishlist</h4><p>Treats for the patients, and the dull essentials like bin bags.</p><span>See wishlist<i class="ph ph-arrow-right"></i></span></a>
+      <a class="way" href="#"><i class="ph ph-hand-heart"></i><h4>Volunteer</h4><p>Hands-on help with feeding, cleaning and care at the centre.</p><span>Get involved<i class="ph ph-arrow-right"></i></span></a>
+      <a class="way" href="#"><i class="ph ph-buildings"></i><h4>Business sponsorship</h4><p>Sponsor an enclosure and put your name on the new build.</p><span>Find out more<i class="ph ph-arrow-right"></i></span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div><span class="brand"><img src="img/logo.png" alt="Wild Things Rescue"></span><p style="max-width:30ch">Lincolnshire's largest wildlife rescue centre. Registered charity 1190933.</p></div>
+      <div><h5>Find us</h5><ul><li>The Estates Offices</li><li>Langrick, PE22 7AN</li><li>9am to 6pm, closed Tuesdays</li></ul></div>
+      <div><h5>Contact</h5><ul><li><a href="tel:01526578579">01526 578579</a></li><li><a href="mailto:lucy@wildthingsrescue.uk">lucy@wildthingsrescue.uk</a></li><li><a href="#">Facebook</a></li></ul></div>
+      <div><h5>Explore</h5><ul><li><a href="#">About &amp; FAQs</a></li><li><a href="#">Our new centre</a></li><li><a href="#">Wall of Thanks</a></li><li><a href="#">Shop</a></li></ul></div>
+    </div>
+    <div class="base"><span>&copy; 2026 Wild Things Rescue</span><span>School and club talks: lucy@wildthingsrescue.uk</span></div>
+  </div>
+</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// testimonials
+const R=[
+ {n:"Aaron Goss",i:"AG",bg:"#a9c78c",q:"Top tier rescue! Ethical standards and dedicated to the best care for all Wild Things that need them."},
+ {n:"Maria Pickering",i:"MP",bg:"#f2a93b",q:"Amazingly helpful with an injured bird. Came and collected, and couldn't have been more reliable."},
+ {n:"Lou Lou",i:"LL",bg:"#ef8451",q:"They took time out of their busy day to help advise me. Wonderful service covering such a huge area. Thank you for all you do."},
+ {n:"slaughteredsacrifice",i:"S",bg:"#2e562a",fg:"#f5f0e4",q:"The very best rescue there is. Polite, friendly but professional staff who do such an amazing job at something that is so, so hard to do."}
+];
+const faces=document.getElementById('faces'),q=document.getElementById('q'),c=document.getElementById('c');
+R.forEach((r,k)=>{const d=document.createElement('div');d.className='face';d.textContent=r.i;d.style.background=r.bg;d.style.color=r.fg||'#172015';d.style.zIndex=R.length-k;d.onclick=()=>go(k);faces.appendChild(d)});
+let cur=0;
+function go(k){cur=(k+R.length)%R.length;[...faces.children].forEach((f,j)=>f.classList.toggle('on',j===cur));
+  const r=R[cur];
+  if(window.gsap){gsap.to([q,c],{opacity:0,y:-12,duration:.25,onComplete:()=>{q.textContent='“'+r.q+'”';c.innerHTML='<b>'+r.n+'</b> on Google';gsap.fromTo([q,c],{opacity:0,y:14},{opacity:1,y:0,duration:.5,stagger:.06,ease:'power3.out'})}})}
+  else{q.textContent='“'+r.q+'”';c.innerHTML='<b>'+r.n+'</b> on Google'}}
+document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
+go(0);
+
+// nav
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>80),{passive:true});
+
+// marquee duplicate
+const mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+
+// split scrub words
+const sc=document.getElementById('scrub');
+(function split(node){[...node.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t))}else{const s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s)}});n.replaceWith(f)}else split(n)})})(sc);
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.gsap && !reduce){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.hero-h',{y:60,opacity:0,duration:1.3,ease:'expo.out'});
+  gsap.from('.hero-p,.hero-c',{y:30,opacity:0,duration:1.1,delay:.25,stagger:.12,ease:'expo.out'});
+  gsap.fromTo('#heroBg',{scale:1.15},{scale:1,duration:2.4,ease:'power2.out'});
+  gsap.to('#heroBg',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('#mq',{xPercent:-50,ease:'none',duration:38,repeat:-1});
+  gsap.utils.toArray('.reveal-up').forEach(el=>gsap.from(el,{y:70,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+  // scrubbing text reveal
+  gsap.to('#scrub .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#scrub',start:'top 78%',end:'bottom 38%',scrub:.6}});
+  gsap.fromTo('#impression',{scale:.86},{scale:1,ease:'none',scrollTrigger:{trigger:'#impression',start:'top bottom',end:'center 60%',scrub:true}});
+  // image scale & fade
+  gsap.utils.toArray('.frame .fig').forEach(f=>{
+    gsap.fromTo(f,{scale:.8},{scale:1,ease:'none',scrollTrigger:{trigger:f,start:'top bottom',end:'center 55%',scrub:true}});
+    gsap.to(f,{opacity:.2,filter:'brightness(.5)',ease:'none',scrollTrigger:{trigger:f,start:'center 30%',end:'bottom top',scrub:true}});
+  });
+} else {
+  document.querySelectorAll('#scrub .w').forEach(w=>w.style.opacity=1);
+  if(!window.gsap){const s=mq.animate([{transform:'translateX(0)'},{transform:'translateX(-50%)'}],{duration:38000,iterations:Infinity})}
+}
+</script>
+</body>
+</html>

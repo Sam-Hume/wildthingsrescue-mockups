@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wild Things Meadow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2e562a; --green-2:#3f7439; --leaf:#8fbf6a; --cream:#fbf6ec; --sand:#f3e8d2;
+  --orange:#ef8451; --orange-d:#d96a36; --ink:#1f2a1d; --muted:#5c6758; --white:#fff;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;border:0;cursor:pointer;font-size:16px}
+.btn:hover{transform:translateY(-2px)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 0 var(--orange-d)}
+.btn-orange:hover{box-shadow:0 8px 0 var(--orange-d)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 6px 0 #1d3a1a}
+.btn-ghost{background:#fff;color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
+
+/* top bar */
+.alert{background:var(--green);color:#fff;font-size:15px}
+.alert .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+.alert strong{color:#ffd9a8}
+.alert a{font-weight:800;text-decoration:none;background:rgba(255,255,255,.14);padding:4px 14px;border-radius:999px}
+.pulse{display:inline-block;width:9px;height:9px;border-radius:50%;background:#7cf07c;margin-right:8px;box-shadow:0 0 0 0 rgba(124,240,124,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(124,240,124,0)}100%{box-shadow:0 0 0 0 rgba(124,240,124,0)}}
+
+header.nav{background:var(--cream);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid rgba(46,86,42,.1)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.logo img{height:62px;width:auto}
+nav ul{display:flex;gap:30px;list-style:none;font-weight:700}
+nav a{text-decoration:none;color:var(--green)}
+nav a:hover{color:var(--orange-d)}
+.nav-cta{display:flex;gap:10px}
+.nav-cta .btn{padding:10px 20px;font-size:15px}
+@media (max-width:900px){nav ul{display:none}.nav-cta .btn-ghost{display:none}}
+
+/* hero */
+.hero{position:relative;padding:70px 0 120px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--sand);color:var(--green);font-weight:800;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-size:clamp(42px,6vw,76px);color:var(--green);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--orange);position:relative;white-space:nowrap}
+.hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:14px}
+.hero p.lead{font-size:20px;color:var(--muted);margin:26px 0 34px;max-width:32ch}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.trust{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap;font-size:14px;color:var(--muted);font-weight:700}
+.trust span{display:flex;align-items:center;gap:6px}
+.stars{color:#f2b01e;letter-spacing:2px}
+
+.collage{position:relative;height:540px}
+.collage figure{position:absolute;border-radius:var(--r);overflow:hidden;box-shadow:0 18px 40px rgba(31,42,29,.18);border:6px solid #fff}
+.collage img{width:100%;height:100%;object-fit:cover}
+.c1{width:62%;height:70%;right:0;top:0;transform:rotate(2deg)}
+.c2{width:48%;height:52%;left:0;top:24%;transform:rotate(-4deg);z-index:2}
+.c3{width:40%;height:40%;right:8%;bottom:0;transform:rotate(3deg);z-index:3}
+.sticker{position:absolute;z-index:5;background:var(--orange);color:#fff;font-family:Fraunces,serif;font-weight:800;border-radius:50%;width:122px;height:122px;display:grid;place-items:center;text-align:center;font-size:17px;line-height:1.15;left:36%;top:-10px;transform:rotate(-10deg);box-shadow:0 10px 24px rgba(239,132,81,.4)}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);z-index:-1}
+.wave{position:absolute;left:0;right:0;bottom:-1px;line-height:0}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.collage{height:420px}.sticker{width:100px;height:100px;font-size:14px}}
+
+/* found an animal */
+.found{background:#fff;padding:90px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 50px}
+.sec-head h2{font-size:clamp(32px,4vw,48px);color:var(--green)}
+.sec-head p{color:var(--muted);font-size:18px;margin-top:14px}
+.kicker{font-weight:800;color:var(--orange-d);text-transform:uppercase;letter-spacing:.12em;font-size:13px;display:block;margin-bottom:10px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.step{background:var(--cream);border-radius:var(--r);padding:34px 28px;position:relative;transition:transform .25s}
+.step:hover{transform:translateY(-6px) rotate(-.5deg)}
+.step .num{width:52px;height:52px;border-radius:16px;background:var(--green);color:#fff;font-family:Fraunces,serif;font-weight:800;font-size:24px;display:grid;place-items:center;margin-bottom:18px;transform:rotate(-6deg)}
+.step:nth-child(2) .num{background:var(--orange)}
+.step:nth-child(3) .num{background:var(--leaf);color:var(--green)}
+.step h3{font-size:24px;color:var(--green);margin-bottom:8px}
+.step p{color:var(--muted)}
+.step a.tel{font-weight:800;color:var(--orange-d);font-size:20px;text-decoration:none}
+.note{margin-top:28px;text-align:center;color:var(--muted);font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.found-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.found-grid .steps{grid-template-columns:1fr;gap:16px}
+.found-grid .step{display:grid;grid-template-columns:52px 1fr;column-gap:20px;padding:24px 26px}
+.found-grid .step>*:not(.num){grid-column:2}
+.found-grid .step .num{grid-row:1/span 3;margin:0}
+.found-pic{position:relative;border-radius:var(--r);overflow:hidden;border:6px solid #fff;box-shadow:0 18px 40px rgba(31,42,29,.18);transform:rotate(-2deg)}
+.found-pic img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:860px){.found-grid{grid-template-columns:1fr}.found-pic{max-width:420px;margin:0 auto}}
+.art{position:relative;border-radius:18px;overflow:hidden;margin-bottom:6px}
+.art img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.art figcaption,.found-pic figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);color:var(--green);font-size:13px;font-weight:800;padding:4px 12px;border-radius:999px}
+
+/* patients */
+.patients{padding:100px 0}
+.p-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.p-card{background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;box-shadow:0 2px 0 rgba(46,86,42,.08);transition:transform .25s,box-shadow .25s}
+.p-card:hover{transform:translateY(-8px);box-shadow:0 20px 34px rgba(31,42,29,.14)}
+.p-card .ph{aspect-ratio:4/5;overflow:hidden}
+.p-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.p-card:hover img{transform:scale(1.07)}
+.p-card .tx{padding:16px 18px 20px}
+.p-card h3{font-size:20px;color:var(--green)}
+.p-card p{font-size:14px;color:var(--muted);line-height:1.4;margin-top:4px}
+@media (max-width:1000px){.p-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:620px){.p-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* new centre */
+.centre{padding:0 0 100px}
+.centre .box{background:var(--green);color:#fff;border-radius:34px;padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
+.centre h2{font-size:clamp(32px,4vw,50px)}
+.centre p{opacity:.88;margin:18px 0 28px;font-size:18px}
+.phase{display:grid;gap:12px}
+.phase div{background:rgba(255,255,255,.1);border-radius:16px;padding:16px 20px;display:flex;gap:16px;align-items:center;font-weight:700}
+.phase i{font-style:normal;width:40px;height:40px;border-radius:12px;background:var(--leaf);color:var(--green);display:grid;place-items:center;font-size:20px;flex:none}
+.phase small{display:block;font-weight:600;opacity:.75;font-size:14px}
+.brick-bg{position:absolute;right:-40px;top:-40px;opacity:.08;width:280px}
+@media (max-width:900px){.centre .box{grid-template-columns:1fr;padding:36px 26px}}
+
+/* help */
+.help{background:var(--sand);padding:100px 0;position:relative}
+.h-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.h-card{background:#fff;border-radius:var(--r);padding:30px 26px;display:flex;flex-direction:column;gap:12px;transition:transform .25s}
+.h-card:hover{transform:translateY(-6px)}
+.h-card .ic{font-size:34px;width:64px;height:64px;border-radius:20px;background:var(--cream);display:grid;place-items:center}
+.h-card h3{font-size:22px;color:var(--green)}
+.h-card p{color:var(--muted);font-size:15px;flex:1}
+.h-card a{font-weight:800;color:var(--orange-d);text-decoration:none}
+.h-card.feature{background:var(--orange);color:#fff}
+.h-card.feature h3,.h-card.feature p,.h-card.feature a{color:#fff}
+.h-card.feature .price{font-family:Fraunces,serif;font-size:54px;font-weight:800;line-height:1}
+.h-card.feature .price small{font-size:18px;font-family:Nunito}
+@media (max-width:1000px){.h-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.h-grid{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{padding:100px 0;overflow:hidden}
+.r-track{display:flex;gap:20px;animation:scroll 40s linear infinite;width:max-content}
+.reviews:hover .r-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.r-card{width:360px;background:#fff;border-radius:var(--r);padding:28px;flex:none}
+.r-card p{font-size:16px;margin:10px 0 16px}
+.r-card b{color:var(--green)}
+.r-card .src{font-size:13px;color:var(--muted)}
+
+/* talks + vets */
+.duo{padding:0 0 100px}
+.duo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.duo .panel{border-radius:var(--r);padding:40px;background:#fff;display:flex;gap:24px;align-items:center}
+.duo .panel img{width:140px;height:140px;border-radius:18px;object-fit:cover;flex:none}
+.duo h3{font-size:26px;color:var(--green);margin-bottom:8px}
+.duo p{color:var(--muted);font-size:15px}
+@media (max-width:900px){.duo .wrap{grid-template-columns:1fr}.duo .panel{flex-direction:column;align-items:flex-start}}
+
+footer{background:var(--ink);color:#d9e2d4;padding:70px 0 30px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h4{font-family:Fraunces,serif;color:#fff;font-size:19px;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px;font-size:15px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--leaf)}
+footer .logo-w{background:#fff;border-radius:18px;padding:10px 16px;display:inline-block;margin-bottom:16px}
+footer .logo-w img{height:54px}
+footer .small{border-top:1px solid rgba(255,255,255,.1);margin-top:50px;padding-top:24px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;opacity:.7}
+@media (max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .cols{grid-template-columns:1fr}}
+
+.reveal{transform:translateY(24px);transition:transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="alert"><div class="wrap">
+  <span><span class="pulse"></span>Found a sick or injured wild animal? <strong>Open today 9am to 6pm</strong> (closed Tuesdays)</span>
+  <a href="tel:01526578579">📞 01526 578579</a>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#"><img src="img/logo.png" alt="Wild Things Rescue"></a>
+  <nav><ul>
+    <li><a href="#">About</a></li><li><a href="#">Our New Centre</a></li><li><a href="#">Support Us</a></li><li><a href="#">Volunteer</a></li><li><a href="#">Shop</a></li>
+  </ul></nav>
+  <div class="nav-cta"><a class="btn btn-ghost" href="#help">Get help</a><a class="btn btn-orange" href="#donate">Donate</a></div>
+</div></header>
+
+<section class="hero">
+  <div class="blob" style="width:420px;height:420px;background:#e6f0d8;right:-120px;top:40px"></div>
+  <div class="blob" style="width:260px;height:260px;background:#fde3d4;left:-80px;bottom:60px"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">🦔 Lincolnshire's largest wildlife rescue</span>
+      <h1>Every wild thing deserves a <em>second chance<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 10 C 60 2, 120 2, 180 7 S 270 12, 298 4" stroke="#ef8451" stroke-width="5" fill="none" stroke-linecap="round"/></svg></em></h1>
+      <p class="lead">We rescue, treat and release sick, injured and orphaned wildlife from across Lincolnshire, from prickly hedgehogs to pint-sized owls.</p>
+      <div class="actions">
+        <a class="btn btn-green" href="tel:01526578579">I've found an animal</a>
+        <a class="btn btn-orange" href="#donate">Support our work</a>
+      </div>
+      <div class="trust">
+        <span><span class="stars">★★★★★</span> Loved on Google</span>
+        <span>✚ Working with vets county-wide</span>
+        <span>Charity no. 1190933</span>
+      </div>
+    </div>
+    <div class="collage">
+      <div class="sticker">Open<br>6 days<br>a week</div>
+      <figure class="c1"><img src="img/owl.jpg" alt="Short-eared owl in recovery"></figure>
+      <figure class="c2"><img src="img/hedgehog.jpg" alt="Hedgehog on moss"></figure>
+      <figure class="c3"><img src="img/cygnet.jpg" alt="Fluffy cygnet"></figure>
+    </div>
+  </div>
+  <div class="wave"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="width:100%;height:80px"><path d="M0 40 C 240 90, 480 0, 720 30 S 1200 80, 1440 20 V80 H0Z" fill="#fff"/></svg></div>
+</section>
+
+<section class="found" id="help">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Found an animal in trouble?</span>
+      <h2>Don't panic. Here's what to do.</h2>
+      <p>Most of our patients arrive because someone kind stopped to help. Here's how you can be that someone.</p>
+    </div>
+    <div class="found-grid">
+    <figure class="found-pic reveal"><img src="img/hands.jpg" alt="Gloved hands placing a hedgehog into a towel-lined box"></figure>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Keep it safe</h3><p>If you can do so safely, pop the animal in a box with a towel and keep it somewhere quiet, dark and away from pets.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Give us a ring</h3><p>Call our casualty line for advice, or message us on Facebook.</p><p style="margin-top:10px"><a class="tel" href="tel:01526578579">01526 578579</a></p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Closed? Try a vet</h3><p>If we're closed, take it to your nearest 24-hour vet. You won't be charged, and if they prescribe medication, we pay.</p></div>
+    </div>
+    </div>
+    <p class="note">We're open 9am to 6pm every day except Tuesday. We can't offer tours, as our patients are wild and need their rest.</p>
+  </div>
+</section>
+
+<section class="patients">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Who we help</span>
+      <h2>Meet the wild things</h2>
+      <p>Covering Lincoln, Boston, Spalding, Grantham and everywhere in between.</p>
+    </div>
+    <div class="p-grid">
+      <a class="p-card reveal" href="#"><div class="ph"><img src="img/hedgehog.jpg" alt=""></div><div class="tx"><h3>Hedgehogs</h3><p>Our spikiest (and most frequent) visitors</p></div></a>
+      <a class="p-card reveal" href="#"><div class="ph"><img src="img/owl.jpg" alt=""></div><div class="tx"><h3>Birds of prey</h3><p>Owls, buzzards and kestrels</p></div></a>
+      <a class="p-card reveal" href="#"><div class="ph"><img src="img/squabs.jpg" alt=""></div><div class="tx"><h3>Garden birds</h3><p>Robins, blackbirds, sparrows, pigeons</p></div></a>
+      <a class="p-card reveal" href="#"><div class="ph"><img src="img/ducklings.jpg" alt=""></div><div class="tx"><h3>Waterfowl</h3><p>Ducks, swans and seabirds</p></div></a>
+      <a class="p-card reveal" href="#"><div class="ph"><img src="img/fox.jpg" alt=""></div><div class="tx"><h3>Mammals</h3><p>From voles and mice to the odd fox cub</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="centre">
+  <div class="wrap">
+    <div class="box reveal">
+      <svg class="brick-bg" viewBox="0 0 100 100"><g fill="#fff"><rect x="0" y="0" width="46" height="20" rx="3"/><rect x="50" y="0" width="46" height="20" rx="3"/><rect x="24" y="24" width="46" height="20" rx="3"/><rect x="0" y="48" width="46" height="20" rx="3"/><rect x="50" y="48" width="46" height="20" rx="3"/><rect x="24" y="72" width="46" height="20" rx="3"/></g></svg>
+      <div>
+        <span class="kicker" style="color:#ffd9a8">We're moving!</span>
+        <h2>Help us build a bigger home for wildlife</h2>
+        <p>We've outgrown our space. Our new centre will have specialist areas for hedgehogs, garden birds, corvids, birds of prey, waterfowl and larger mammals. It's a big job, and we want it built by the community.</p>
+        <div class="actions" style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-orange" href="#">Buy a brick</a>
+          <a class="btn btn-ghost" href="#" style="background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff">Sponsor an enclosure</a>
+        </div>
+      </div>
+      <div class="phase">
+        <figure class="art"><img src="img/centre-art.jpg" alt="Illustration of the planned new rescue centre"><figcaption>Artist's impression</figcaption></figure>
+        <div><i>🧼</i><span>Isolation cabin<small>Wipe-clean walls, non-slip floors, drainage</small></span></div>
+        <div><i>🏠</i><span>Reception<small>Where new patients arrive, plus a little shop</small></span></div>
+        <div><i>🦔</i><span>Species rooms<small>Admissions, bird room and hedgehog room</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="help" id="donate">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Ways to help</span>
+      <h2>Big or small, it all helps</h2>
+      <p>We rely entirely on donations. Here's how you can keep our patients fed, warm and on the mend.</p>
+    </div>
+    <div class="h-grid">
+      <div class="h-card feature reveal"><div class="price">£3<small> /month</small></div><h3>Become a regular donor</h3><p>Regular gifts help us plan ahead, which means we can take in more animals.</p><a href="#">Sign up →</a></div>
+      <div class="h-card reveal"><div class="ic">🍽️</div><h3>Buy a meal</h3><p>Meal tickets and yearly sponsorship packs for our patients.</p><a href="#">View packs →</a></div>
+      <div class="h-card reveal"><div class="ic">🎁</div><h3>Amazon wishlist</h3><p>Send a present, or the less exciting bits. We get through a lot of bin bags!</p><a href="#">See wishlist →</a></div>
+      <div class="h-card reveal"><div class="ic">🙋</div><h3>Volunteer</h3><p>Get hands-on with feeding, cleaning and care. Ideal if you're thinking of a career in rehab.</p><a href="#">Learn more →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap sec-head reveal" style="margin-bottom:40px">
+    <span class="kicker">Kind words</span>
+    <h2>What people say about us</h2>
+  </div>
+  <div class="r-track">
+    <div class="r-card"><span class="stars">★★★★★</span><p>"The very best rescue there is. Polite, friendly but professional staff who do such an amazing job at something that is so so hard to do!"</p><b>slaughteredsacrifice</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Amazingly helpful with an injured bird. Came and collected and couldn't have been more reliable."</p><b>Maria Pickering</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Top tier rescue! Ethical standards and dedicated to the best care for all Wild Things that need them!"</p><b>Aaron Goss</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Wonderful service covering such a huge area. Thank you for all you do."</p><b>Lou Lou</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Great staff, doing fabulous work looking after our wildlife!"</p><b>Gary Hurst</b><div class="src">Google review</div></div>
+    <!-- duplicate for loop -->
+    <div class="r-card"><span class="stars">★★★★★</span><p>"The very best rescue there is. Polite, friendly but professional staff who do such an amazing job at something that is so so hard to do!"</p><b>slaughteredsacrifice</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Amazingly helpful with an injured bird. Came and collected and couldn't have been more reliable."</p><b>Maria Pickering</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Top tier rescue! Ethical standards and dedicated to the best care for all Wild Things that need them!"</p><b>Aaron Goss</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Wonderful service covering such a huge area. Thank you for all you do."</p><b>Lou Lou</b><div class="src">Google review</div></div>
+    <div class="r-card"><span class="stars">★★★★★</span><p>"Great staff, doing fabulous work looking after our wildlife!"</p><b>Gary Hurst</b><div class="src">Google review</div></div>
+  </div>
+</section>
+
+<section class="duo">
+  <div class="wrap">
+    <div class="panel reveal"><img src="img/xray.jpg" alt="X-ray of a swan"><div><h3>Proper medical care</h3><p>We work hand in hand with vets across the county, from X-rays to medication, so every patient gets the treatment it needs.</p></div></div>
+    <div class="panel reveal"><img src="img/ducklings.jpg" alt="Duck with ducklings"><div><h3>Talks for schools and clubs</h3><p>We love visiting schools and groups to talk about local wildlife. (We leave the patients at home to rest!) Email <a href="mailto:lucy@wildthingsrescue.uk"><b>lucy@wildthingsrescue.uk</b></a></p></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="logo-w"><img src="img/logo.png" alt="Wild Things Rescue"></span><p style="font-size:15px;max-width:30ch">Lincolnshire's largest wildlife rescue centre. Registered charity no. 1190933.</p></div>
+      <div><h4>Visit</h4><ul><li>The Estates Offices</li><li>Langrick, PE22 7AN</li><li>9am to 6pm, closed Tuesdays</li></ul></div>
+      <div><h4>Get in touch</h4><ul><li><a href="tel:01526578579">01526 578579</a></li><li><a href="mailto:lucy@wildthingsrescue.uk">lucy@wildthingsrescue.uk</a></li><li><a href="#">Facebook</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="#">Make a donation</a></li><li><a href="#">Business sponsorship</a></li><li><a href="#">Wall of Thanks</a></li><li><a href="#">Shop</a></li></ul></div>
+    </div>
+    <div class="small"><span>© 2026 Wild Things Rescue</span><span>Made with love for Lincolnshire's wildlife</span></div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%5)*80+'ms';io.observe(el)});
+</script>
+</body>
+</html>
